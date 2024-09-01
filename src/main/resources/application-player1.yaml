@@ -1,6 +1,5 @@
 spring:
   application.name: "code-challenge"
-
   kafka:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -12,22 +11,21 @@ spring:
       auto-offset-reset: earliest
     bootstrap-servers: "localhost:9092"
 
-  rabbitmq:
-    host: "localhost"
-    port: "5672"
-    username: "guest"
-    password: "guest"
+player:
+  current: "Player 1"
+  opponent: "Player 2"
 
-  data:
-    mongodb:
-      uri: "mongodb://localhost:27017/mongodatabase"
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:h2database
-    username: sa
-    password:
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+kafka:
+  topic:
+    winner:
+      current: "win1-topic"
+      opponent: "win2-topic"
+    listener: "player1-topic"
+    producer: "player2-topic"
 
-  #    http://localhost:8080/h2-console
-  h2.console.enabled: true
+server:
+  port: 8081
+
+logging:
+  level:
+    ROOT: ERROR
